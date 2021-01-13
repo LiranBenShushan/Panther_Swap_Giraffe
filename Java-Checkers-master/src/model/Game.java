@@ -56,6 +56,7 @@ public class Game implements Comparable<Game>, GameObserver {
 
 	public static Point redTile = new Point();
 	private static Point greenTile = new Point();
+	private static Point purpleTile = new Point();
 	private static ArrayList<Point> yellowT = new ArrayList<Point>();
 	private static ArrayList<Point> orangeT = new ArrayList<Point>();
 	private static Point blueTile = new Point();
@@ -404,6 +405,9 @@ public class Game implements Comparable<Game>, GameObserver {
 		}
 	}
 
+
+	
+	
 	public void orangeTiles() {
 
 		if (isP1Turn()) {
@@ -428,6 +432,43 @@ public class Game implements Comparable<Game>, GameObserver {
 		}
 	}
 
+	
+
+	/*-------------------------------------- Panther team --------------------------------------*/
+	public void purpleTiles() {
+
+		if (isP1Turn()) {
+			chooseThePurpleTile(Board.BLACK_CHECKER, Board.BLACK_KING);
+		} else {
+			chooseThePurpleTile(Board.WHITE_CHECKER, Board.WHITE_KING);
+		}
+	}
+	
+	
+	private void chooseThePurpleTile(int id1, int id2) {
+		ArrayList<Point> purpleT = new ArrayList<Point>();
+		purpleTile.setLocation(-5, -5);
+		Random rand = new Random();
+		List<Point> arrlistPurple = new ArrayList<Point>();
+		arrlistPurple = board.find(Board.EMPTY);
+		System.out.println(arrlistPurple);
+		if (!arrlistPurple.isEmpty()) {
+			boolean purpleOkay = false;
+			while(!purpleOkay) {
+				Point potentialTile = arrlistPurple.get(rand.nextInt(arrlistPurple.size()));
+				if (!yellowT.contains(potentialTile) && !potentialTile.equals(redTile) && !potentialTile.equals(blueTile) && !potentialTile.equals(greenTile)) {
+					purpleTile = potentialTile;
+					purpleOkay = true;
+					return;
+				}
+			}
+			System.out.println(purpleTile);
+		}
+		return;
+	}	
+	
+	/*-------------------------------------- End of panther team --------------------------------------*/
+	
 	
 	public ArrayList<Point> AvailableMoves(int Startindex, int id) {
 		if ((id == Board.BLACK_KING || id == Board.WHITE_KING) && Buttonclicked == false) {
@@ -641,6 +682,7 @@ public class Game implements Comparable<Game>, GameObserver {
 		yellowTiles();
 		redTiles();
 		greenTile.setLocation(-5, -5);
+		purpleTile.setLocation(-5, -5);
 		orangeT = new ArrayList<Point>();
 		GameController.getInstance().restartTimer(true);
 		GameController.getInstance().restartTotalTimer(true);
@@ -763,6 +805,14 @@ public class Game implements Comparable<Game>, GameObserver {
 
 	public Point getGreenTile() {
 		return greenTile;
+	}
+
+	public Point getPurpleTile() {
+		return purpleTile;
+	}
+
+	public static void setPurpleTile(Point purpleTile) {
+		Game.purpleTile = purpleTile;
 	}
 
 	public void setGreenTile(Point greenTile) {

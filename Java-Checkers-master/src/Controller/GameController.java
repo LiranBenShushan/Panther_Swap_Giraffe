@@ -10,6 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import View.CheckerBoard;
 import View.CheckersWindow;
+import model.Board;
 import model.Game;
 import model.Move;
 import model.Question;
@@ -54,6 +55,14 @@ public class GameController {
 			cb.paintColors(g, game.getOrangeT().get(i).x, game.getOrangeT().get(i).y, Color.orange);
 		}
 	}
+
+	public void purpleTile(Graphics g, CheckerBoard cb, Game game) {
+		if (game.getPurpleTile().x != -5 && game.getPurpleTile().y != -5) {
+			cb.paintColors(g, game.getPurpleTile().x, game.getPurpleTile().y, new Color(128,0,128));
+		}
+	}
+	
+
 
 	public void gameOver(Game game, CheckerBoard board) {
 		try {
@@ -107,6 +116,9 @@ public class GameController {
 		CheckersWindow.GMsg(point);
 	
 }
+	public void PurpleMsg(Game game , int point) {
+		CheckersWindow.purpleMsg(point);
+}
 	
 	public void QMsg(Game game , int point) {
 		CheckersWindow.QMsg(point);
@@ -154,4 +166,10 @@ public class GameController {
 	public void resetTimer() {
 		CheckersWindow.restart1();
 	}
+	
+	
+	public void resetBoard(Board b) {
+		b.reset();
+	}
+	
 }

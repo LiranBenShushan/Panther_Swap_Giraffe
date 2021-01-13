@@ -120,6 +120,7 @@ public class CheckerBoard extends JButton {
 		game.redTiles();
 		game.blueTiles();
 		game.getGreenTile().setLocation(-5, -5);
+		game.getPurpleTile().setLocation(-5, -5);
 	}
 
 	/**
@@ -239,7 +240,7 @@ public class CheckerBoard extends JButton {
 		GameController.getInstance().blueTile(g, this, game);
 		GameController.getInstance().greenTile(g, this, game);
 		GameController.getInstance().orangeTiles(g, this, game);
-
+		GameController.getInstance().purpleTile(g, this, game);
 		if (Game.toRemove != -1) {
 			try {
 				fireImage = ImageIO.read(new File("src/image/fire.png"));

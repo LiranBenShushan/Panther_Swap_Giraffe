@@ -42,7 +42,7 @@ public class Move {
 	public static boolean UpDown = false;
 	public static boolean LeftRight = false;
 	public static boolean isSkip = false;
-
+	public int chosenOption;
 	private static int flag = 0;
 	private static int ComputerCount = 0;
 
@@ -1087,6 +1087,38 @@ public class Move {
 				}
 			}
 
+			/* PANTHER TEAM */
+			boolean Purpleflag = false;
+			/** check if the endIndex is PURPLE tile */
+			if (endIndex == Board.toIndex(game.getPurpleTile())) {
+				System.out.println("***PURPLE TILE***");
+				Random rand = new Random();
+				chosenOption = rand.nextInt(3);
+				// if the random state == 0 then the player gets 200 points to his score.
+				if(chosenOption == 0) {
+					game.setPoints(200, true);
+					Purpleflag = true;
+				}
+				// if the random state == 1 then the player will get a random question.
+				else if(chosenOption == 1) {
+					try {
+						if (endIndex == Board.toIndex(game.getPurpleTile()) && !game.isGameOver()) {
+							GameController.getInstance().displayQuestion(SysData.popRandomQuestion(), game);
+							flag = 1;
+						}
+					} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				// if the random state == 2 then we will reset the board and keep the score and time.
+				else if(chosenOption == 2) {
+					GameController.getInstance().resetBoard(board);
+				}
+			}
+			/* END PANTHER TEAM */
+			
+			
 			if (switchTurn) {
 				int points;
 				if (flag == 1) {
@@ -1100,12 +1132,17 @@ public class Move {
 					game.setPoints(points, false);
 					if (midIndex != -1 && (board.get(endIndex) != Board.WHITE_KING && board.get(endIndex) != Board.BLACK_KING )) {
 						GameController.getInstance().EatMsg(game, -points);
-
-					} else if (Greenflag == false)
+					} else if (Greenflag == false && Purpleflag == false)
 						GameController.getInstance().PMsg(game, -points);
-					else if (Greenflag == true) {
+					else if (Greenflag == true && Purpleflag == false) {
 						GameController.getInstance().GreenMsg(game, -points);
 					}
+					/*Panther team */
+					else if (Purpleflag == true && chosenOption == 0) {
+						System.out.println("yay -200");
+						GameController.getInstance().PurpleMsg(game, -points);
+					}
+					/*Panther team */
 				}
 
 				else if (points < 60) {
@@ -1115,12 +1152,18 @@ public class Move {
 					if (midIndex != -1 && (board.get(endIndex) != Board.WHITE_KING && board.get(endIndex) != Board.BLACK_KING )) {
 						GameController.getInstance().EatMsg(game, points);
 
-					} else if (Greenflag == false)
+					} else if (Greenflag == false && Purpleflag == false)
 						GameController.getInstance().PMsg(game, points);
-					else if (Greenflag == true) {
-
+					else if (Greenflag == true && Purpleflag == false) {
 						GameController.getInstance().GreenMsg(game, points);
 					}
+					/*Panther team */
+
+					else if (Purpleflag == true && chosenOption == 0) {
+						System.out.println("yay 200");
+						GameController.getInstance().PurpleMsg(game, points);
+					}
+					/*Panther team */
 				}
 				switchTurn(game);
 
@@ -1145,6 +1188,7 @@ public class Move {
 		game.blueTiles();
 		game.setOrangeT(new ArrayList<Point>());
 		game.getGreenTile().setLocation(-5, -5);
+		game.getPurpleTile().setLocation(-5, -5);
 
 	}
 

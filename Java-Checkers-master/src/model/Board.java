@@ -110,7 +110,6 @@ public class Board {
 				points.add(toPoint(i));
 			}
 		}
-
 		return points;
 	}
 
