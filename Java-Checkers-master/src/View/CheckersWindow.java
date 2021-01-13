@@ -484,6 +484,7 @@ public class CheckersWindow extends JFrame {
 		this.board.getGame().yellowTiles();
 		this.board.getGame().redTiles();
 		this.board.getGame().getGreenTile().setLocation(-5, -5);
+		this.board.getGame().getPurpleTile().setLocation(-5, -5);
 		this.board.getGame().setOrangeT(new ArrayList<Point>());
 		this.board.getGame().Point1 = 0;
 		this.board.getGame().point2 = 0;
@@ -515,6 +516,10 @@ public class CheckersWindow extends JFrame {
 
 				if (minute == 0 && second == 30) {
 					board.getGame().greenTiles();
+					repaint();
+				}
+				if (minute == 0 && second == 45) {
+					board.getGame().purpleTiles();
 					repaint();
 				}
 				if (minute == 1 && second == 30) {
