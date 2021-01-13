@@ -518,7 +518,7 @@ public class CheckersWindow extends JFrame {
 					board.getGame().greenTiles();
 					repaint();
 				}
-				if (minute == 0 && second == 4) {
+				if (minute == 0 && second == 45) {
 					board.getGame().purpleTiles();
 					repaint();
 				}

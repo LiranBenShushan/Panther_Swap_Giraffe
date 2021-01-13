@@ -1089,16 +1089,18 @@ public class Move {
 
 			/* PANTHER TEAM */
 			boolean Purpleflag = false;
-			/** check if the endIndex is green tile */
+			/** check if the endIndex is PURPLE tile */
 			if (endIndex == Board.toIndex(game.getPurpleTile())) {
 				System.out.println("***PURPLE TILE***");
 				/* need to make random here from few options */
 				Random rand = new Random();
 				int chosenOption = rand.nextInt(3);
+				// if the random state == 0 then the player gets 200 points to his score.
 				if(chosenOption == 0) {
 					game.setPoints(200, true);
 					Purpleflag = true;
 				}
+				// if the random state == 1 then the player will get a random question.
 				else if(chosenOption == 1) {
 					try {
 						if (endIndex == Board.toIndex(game.getPurpleTile()) && !game.isGameOver()) {
@@ -1111,13 +1113,10 @@ public class Move {
 						e.printStackTrace();
 					}
 				}
+				// if the random state == 2 then we will reset the board and keep the score and time.
 				else if(chosenOption == 2) {
 					GameController.getInstance().resetBoard(board);
-					System.out.println("Im 2");
-				}else
-					System.out.println("no one" + chosenOption);
-				
-
+				}
 			}
 			/* END PANTHER TEAM */
 			
