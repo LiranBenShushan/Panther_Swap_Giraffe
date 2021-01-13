@@ -1087,6 +1087,41 @@ public class Move {
 				}
 			}
 
+			/* PANTHER TEAM */
+			boolean Purpleflag = false;
+			/** check if the endIndex is green tile */
+			if (endIndex == Board.toIndex(game.getPurpleTile())) {
+				System.out.println("***PURPLE TILE***");
+				/* need to make random here from few options */
+				Random rand = new Random();
+				int chosenOption = rand.nextInt(3);
+				if(chosenOption == 0) {
+					game.setPoints(200, true);
+					Purpleflag = true;
+				}
+				else if(chosenOption == 1) {
+					try {
+						if (endIndex == Board.toIndex(game.getPurpleTile()) && !game.isGameOver()) {
+
+							GameController.getInstance().displayQuestion(SysData.popRandomQuestion(), game);
+							flag = 1;
+						}
+					} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if(chosenOption == 2) {
+					GameController.getInstance().resetBoard(board);
+					System.out.println("Im 2");
+				}else
+					System.out.println("no one" + chosenOption);
+				
+
+			}
+			/* END PANTHER TEAM */
+			
+			
 			if (switchTurn) {
 				int points;
 				if (flag == 1) {
@@ -1106,6 +1141,13 @@ public class Move {
 					else if (Greenflag == true) {
 						GameController.getInstance().GreenMsg(game, -points);
 					}
+					/*Panther team */
+					else if (Purpleflag == false)
+						GameController.getInstance().PMsg(game, -points);
+					else if (Purpleflag == true) {
+						GameController.getInstance().GreenMsg(game, -points);
+					}
+					/*Panther team */
 				}
 
 				else if (points < 60) {
@@ -1118,9 +1160,15 @@ public class Move {
 					} else if (Greenflag == false)
 						GameController.getInstance().PMsg(game, points);
 					else if (Greenflag == true) {
-
 						GameController.getInstance().GreenMsg(game, points);
 					}
+					/*Panther team */
+					else if (Purpleflag == false)
+						GameController.getInstance().PMsg(game, points);
+					else if (Purpleflag == true) {
+						GameController.getInstance().GreenMsg(game, points);
+					}
+					/*Panther team */
 				}
 				switchTurn(game);
 
@@ -1145,6 +1193,7 @@ public class Move {
 		game.blueTiles();
 		game.setOrangeT(new ArrayList<Point>());
 		game.getGreenTile().setLocation(-5, -5);
+		game.getPurpleTile().setLocation(-5, -5);
 
 	}
 

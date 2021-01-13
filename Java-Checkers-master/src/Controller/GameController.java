@@ -10,6 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import View.CheckerBoard;
 import View.CheckersWindow;
+import model.Board;
 import model.Game;
 import model.Move;
 import model.Question;
@@ -162,4 +163,10 @@ public class GameController {
 	public void resetTimer() {
 		CheckersWindow.restart1();
 	}
+	
+	
+	public void resetBoard(Board b) {
+		b.reset();
+	}
+	
 }
