@@ -625,6 +625,16 @@ public class CheckersWindow extends JFrame {
 
 	}
 
+	public static void purpleMsg(int Points) {
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		if (200 + Points < 0)
+			lblNewLabel_7.setText("<html>" + (200 + Points) + "</html>");
+		else
+			lblNewLabel_7.setText("<html>+" + (200 + Points) + "</html>");
+		lblNewLabel_7.setFont(lblNewLabel_7.getFont().deriveFont(30.0f));
+
+	}
+	
 	public static void PMsg(int point) {
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 		System.out.println(point);

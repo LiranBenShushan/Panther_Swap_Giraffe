@@ -42,7 +42,7 @@ public class Move {
 	public static boolean UpDown = false;
 	public static boolean LeftRight = false;
 	public static boolean isSkip = false;
-
+	public int chosenOption;
 	private static int flag = 0;
 	private static int ComputerCount = 0;
 
@@ -1092,9 +1092,8 @@ public class Move {
 			/** check if the endIndex is PURPLE tile */
 			if (endIndex == Board.toIndex(game.getPurpleTile())) {
 				System.out.println("***PURPLE TILE***");
-				/* need to make random here from few options */
 				Random rand = new Random();
-				int chosenOption = rand.nextInt(3);
+				chosenOption = rand.nextInt(3);
 				// if the random state == 0 then the player gets 200 points to his score.
 				if(chosenOption == 0) {
 					game.setPoints(200, true);
@@ -1104,7 +1103,6 @@ public class Move {
 				else if(chosenOption == 1) {
 					try {
 						if (endIndex == Board.toIndex(game.getPurpleTile()) && !game.isGameOver()) {
-
 							GameController.getInstance().displayQuestion(SysData.popRandomQuestion(), game);
 							flag = 1;
 						}
@@ -1134,17 +1132,15 @@ public class Move {
 					game.setPoints(points, false);
 					if (midIndex != -1 && (board.get(endIndex) != Board.WHITE_KING && board.get(endIndex) != Board.BLACK_KING )) {
 						GameController.getInstance().EatMsg(game, -points);
-
-					} else if (Greenflag == false)
+					} else if (Greenflag == false && Purpleflag == false)
 						GameController.getInstance().PMsg(game, -points);
-					else if (Greenflag == true) {
+					else if (Greenflag == true && Purpleflag == false) {
 						GameController.getInstance().GreenMsg(game, -points);
 					}
 					/*Panther team */
-					else if (Purpleflag == false)
-						GameController.getInstance().PMsg(game, -points);
-					else if (Purpleflag == true) {
-						GameController.getInstance().GreenMsg(game, -points);
+					else if (Purpleflag == true && chosenOption == 0) {
+						System.out.println("yay -200");
+						GameController.getInstance().PurpleMsg(game, -points);
 					}
 					/*Panther team */
 				}
@@ -1156,16 +1152,16 @@ public class Move {
 					if (midIndex != -1 && (board.get(endIndex) != Board.WHITE_KING && board.get(endIndex) != Board.BLACK_KING )) {
 						GameController.getInstance().EatMsg(game, points);
 
-					} else if (Greenflag == false)
+					} else if (Greenflag == false && Purpleflag == false)
 						GameController.getInstance().PMsg(game, points);
-					else if (Greenflag == true) {
+					else if (Greenflag == true && Purpleflag == false) {
 						GameController.getInstance().GreenMsg(game, points);
 					}
 					/*Panther team */
-					else if (Purpleflag == false)
-						GameController.getInstance().PMsg(game, points);
-					else if (Purpleflag == true) {
-						GameController.getInstance().GreenMsg(game, points);
+
+					else if (Purpleflag == true && chosenOption == 0) {
+						System.out.println("yay 200");
+						GameController.getInstance().PurpleMsg(game, points);
 					}
 					/*Panther team */
 				}

@@ -449,18 +449,6 @@ public class Game implements Comparable<Game>, GameObserver {
 		ArrayList<Point> purpleT = new ArrayList<Point>();
 		purpleTile.setLocation(-5, -5);
 		Random rand = new Random();
-
-//		for (int i = 0; i < Board.N_Checkers; i++) {
-//			if (board.get(i) == id1 || board.get(i) == id2) {
-//				for (int j = 0; j < Board.N_Checkers; j++) {
-//					if (board.get(j) == Board.EMPTY) {
-//						if (MoveLogic.isValidMove(this, i, j)) {
-//							purpleT.add(Board.toPoint(j));
-//						}
-//					}
-//				}
-//			}
-//		}
 		List<Point> arrlistPurple = new ArrayList<Point>();
 		arrlistPurple = board.find(Board.EMPTY);
 		System.out.println(arrlistPurple);
@@ -476,32 +464,7 @@ public class Game implements Comparable<Game>, GameObserver {
 			}
 			System.out.println(purpleTile);
 		}
-		
 		return;
-		
-//		if (!purpleT.isEmpty()) {
-//			boolean purpleOkay = false;
-//			while(!purpleOkay) {
-//				purpleTile = purpleT.get(rand.nextInt(purpleT.size()));
-//				if (!yellowT.contains(purpleTile)) {
-//					purpleOkay = true;
-//					return;
-//				}
-//				else if (!purpleTile.equals(redTile)) {
-//					purpleOkay = true;
-//					return;
-//				}
-//				else if (!purpleTile.equals(blueTile)) {
-//					purpleOkay = true;
-//					return;
-//				}
-//				else if (!purpleTile.equals(greenTile)) {
-//					purpleOkay = true;
-//					return;
-//				}
-//			}
-//			
-//		}
 	}	
 	
 	/*-------------------------------------- End of panther team --------------------------------------*/

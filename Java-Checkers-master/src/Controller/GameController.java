@@ -116,6 +116,9 @@ public class GameController {
 		CheckersWindow.GMsg(point);
 	
 }
+	public void PurpleMsg(Game game , int point) {
+		CheckersWindow.purpleMsg(point);
+}
 	
 	public void QMsg(Game game , int point) {
 		CheckersWindow.QMsg(point);
