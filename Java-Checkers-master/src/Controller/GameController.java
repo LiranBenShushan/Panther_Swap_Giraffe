@@ -56,6 +56,12 @@ public class GameController {
 		}
 	}
 
+	/**
+	 * This method changes the color of the board and generate a purple tile.
+	 * @param g
+	 * @param cb
+	 * @param game
+	 */
 	public void purpleTile(Graphics g, CheckerBoard cb, Game game) {
 		if (game.getPurpleTile().x != -5 && game.getPurpleTile().y != -5) {
 			cb.paintColors(g, game.getPurpleTile().x, game.getPurpleTile().y, new Color(128,0,128));

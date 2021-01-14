@@ -435,6 +435,10 @@ public class Game implements Comparable<Game>, GameObserver {
 	
 
 	/*-------------------------------------- Panther team --------------------------------------*/
+	/**
+	 * This method generate purple tile on the board when triggered from the Controller.
+	 * Purple tile is generated when timer gets to 45 sec and suppose to show up on random BLACK tile only.
+	 */
 	public void purpleTiles() {
 
 		if (isP1Turn()) {
@@ -444,14 +448,17 @@ public class Game implements Comparable<Game>, GameObserver {
 		}
 	}
 	
-	
+	/**
+	 * Private method of generating a purple tile, this method chooses the right places for generating a purple tile
+	 * @param id1 Checker of the player
+	 * @param id2 King type of the player
+	 */
 	private void chooseThePurpleTile(int id1, int id2) {
 		ArrayList<Point> purpleT = new ArrayList<Point>();
 		purpleTile.setLocation(-5, -5);
 		Random rand = new Random();
 		List<Point> arrlistPurple = new ArrayList<Point>();
 		arrlistPurple = board.find(Board.EMPTY);
-		System.out.println(arrlistPurple);
 		if (!arrlistPurple.isEmpty()) {
 			boolean purpleOkay = false;
 			while(!purpleOkay) {
@@ -462,7 +469,6 @@ public class Game implements Comparable<Game>, GameObserver {
 					return;
 				}
 			}
-			System.out.println(purpleTile);
 		}
 		return;
 	}	

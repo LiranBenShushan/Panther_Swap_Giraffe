@@ -1087,7 +1087,14 @@ public class Move {
 				}
 			}
 
-			/* PANTHER TEAM */
+			/* START PANTHER TEAM */
+			
+			/**
+			 * This is the place we check about purple tile, if the purple is a tile we generate a random Number between 0-2 included and acts as below : 
+			 * 0 - Give the player 200 points.
+			 * 1 - Pop a question to the player. 
+			 * 2 - Reset the game board 
+			 */
 			boolean Purpleflag = false;
 			/** check if the endIndex is PURPLE tile */
 			if (endIndex == Board.toIndex(game.getPurpleTile())) {
