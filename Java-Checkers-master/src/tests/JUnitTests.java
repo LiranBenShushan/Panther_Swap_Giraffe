@@ -32,15 +32,15 @@ public class JUnitTests {
 	public void AddQuestionTest() {
 		int number = 1;
 		boolean isMultipleChoice = true;
-		String content = "Who are the Females here";
+		String content = "Who ar1e the Females here";
 		Difficulty difficultly = Difficulty.easy;
 		ArrayList<String> answers = new ArrayList<String>();
 		answers.add("Sulafa");
-		answers.add("Sameh");
+		answers.add("Sameh1");
 		answers.add("Samya");
 		answers.add("Samer");
 		String correct1 = "Sulafa";
-		String correct2 = "Samya";
+		//String correct2 = "Samya";
 
 		Question q = new Question( content, answers,correct1,difficultly,"Giraffe");
 		int questions = SysData.getQuestions().size();
